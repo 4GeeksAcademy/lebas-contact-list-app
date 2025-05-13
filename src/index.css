@@ -1,0 +1,19 @@
+img {
+    width: 6.6rem;
+}
+
+.tel {
+    font-size: 0.8rem;
+}
+
+.mail {
+    font-size: 0.7rem;
+}
+
+i {
+    cursor: pointer;
+}
+
+div.col-3.m-2 > a {
+    color:black;
+}
