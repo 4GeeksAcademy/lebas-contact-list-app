@@ -19,14 +19,37 @@ export const Contact = () => {
     };	
 
 const getContacts = () => {
-		fetch(`${urlAgenda}/contacts`)
-		.then((response) => {
-			return response.json()		
-		})
-		.then((data) => {
-			setListContacts(data.contacts);
-		})	
-	};
+  fetch(`${urlAgenda}/contacts/`)
+    .then(response => response.json())
+    .then(data => {
+      if (
+        data &&
+        Array.isArray(data.contacts) &&
+        data.contacts.length === 0
+      ) {
+        return fetch(`${urlAgenda}/contacts/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: "Mike Anamendolla",
+            phone: "(870) 288-4149",
+            email: "mike.ana@example.com",
+            address: "5842 Hillcrest Rd"
+          })
+        })
+        .then(() => {
+          return fetch(`${urlAgenda}/contacts/`).then(res => res.json());
+        });
+      } else {
+        return data;
+      }
+    })
+    .then(data => {
+      setListContacts(data.contacts);
+    })
+};
 
 	useEffect(() => {
 	createAgenda();
