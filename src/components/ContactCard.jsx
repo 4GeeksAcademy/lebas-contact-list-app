@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Modal } from "./Modal";
+import userImageUrl from "../assets/img/69.jpg" 
 
 export const ContactCard = ({ name, email, address, phone, id, getContacts }) => {
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +15,7 @@ export const ContactCard = ({ name, email, address, phone, id, getContacts }) =>
     <div className="col-12 border d-inline-flex">
       <div className="col-4 p-2">
         <img
-          src="https://xsgames.co/randomusers/assets/avatars/male/69.jpg"
+          src={userImageUrl}
           alt="contact"
           className="rounded-circle"
         />
